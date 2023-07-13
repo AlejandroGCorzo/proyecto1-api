@@ -40,16 +40,6 @@ COPY --chown=node:node . .
 RUN npm run build
 
 # Set NODE_ENV environment variable
-ENV DB_URL=mongodb+srv://project1-api:TYy39qffALwziw9v@cluster0.befs0ml.mongodb.net/
-ENV PORT=3000
-ENV JWT_SECRET=5EzRefc98@qSSxL%+L2nSs&slvY*u9MiR
-ENV MAIL_HOST=smtp.gmail.com
-ENV MAIL_USER=esanchez@betriax.com
-ENV MAIL_PASSWORD=uzzeazawrtsexxkq
-ENV MAIL_FROM=esanchez@betriax.com
-
-# ENV JWT_SECRET=5EzRefc98@qSSxL%+L2nSs&slvY*u9MiR 
-# ENV SEND_GRID_KEY=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
 
 # Running `npm ci` removes the existing node_modules directory and passing in --only=production ensures that only the production dependencies are installed. This ensures that the node_modules directory is as optimized as possible
 RUN npm ci --only=production && npm cache clean --force
@@ -67,19 +57,6 @@ COPY --chown=node:node --from=build /usr/src/app/node_modules ./node_modules
 COPY --chown=node:node --from=build /usr/src/app/dist ./dist
 
 # Set NODE_ENV environment variable
-ENV DB_URL=mongodb+srv://project1-api:TYy39qffALwziw9v@cluster0.befs0ml.mongodb.net/
-ENV PORT=3000
-ENV JWT_SECRET=5EzRefc98@qSSxL%+L2nSs&slvY*u9MiR
-ENV MAIL_HOST=smtp.gmail.com
-ENV MAIL_USER=esanchez@betriax.com
-ENV MAIL_PASSWORD=uzzeazawrtsexxkq
-ENV MAIL_FROM=esanchez@betriax.com
-# ENV JWT_SECRET=5EzRefc98@qSSxL%+L2nSs&slvY*u9MiR 
-# ENV MAIL_FROM=esanchez@betriax.com
+
 # Start the server using the production build
 CMD [ "node", "dist/main.js" ]
-# ENV MAIL_USER=esanchez@betriax.com
-# ENV MAIL_PASSWORD=szztyozhdgnstfez
-# ENV MAIL_FROM=esanchez@betriax.com
-
-#pass_email_informesbolivia@betriax.com=20Vargas11_
